@@ -1,0 +1,65 @@
+import java.util.*;
+
+class MinimaxDecision {
+    // Función Decisión-Minimax
+    static Action decisionMinimax(State state) {
+        int v = maxValue(state);
+        return actionWithUtility(state, v);
+    }
+
+    // Función Max-Valor
+    static int maxValue(State state) {
+        if (isTerminal(state)) {
+            return utility(state);
+        }
+        int v = Integer.MIN_VALUE;
+        for (State s : successors(state)) {
+            v = Math.max(v, minValue(s));
+        }
+        return v;
+    }
+
+    // Función Min-Valor
+    static int minValue(State state) {
+        if (isTerminal(state)) {
+            return utility(state);
+        }
+        int v = Integer.MAX_VALUE;
+        for (State s : successors(state)) {
+            v = Math.min(v, maxValue(s));
+        }
+        return v;
+    }
+
+    // Función Test-Terminal
+    static boolean isTerminal(State state) {
+        // Aquí va la lógica para verificar si el estado es terminal
+        return false;
+    }
+
+    // Función Utilidad
+    static int utility(State state) {
+        // Aquí va la lógica para calcular la utilidad del estado
+        return 0;
+    }
+
+    // Función Sucesores
+    static List<State> successors(State state) {
+        // Aquí va la lógica para generar los sucesores del estado
+        return new ArrayList<>();
+    }
+
+    // Función para asociar una acción con un valor de utilidad (en caso de empate)
+    static Action actionWithUtility(State state, int utility) {
+        // Aquí va la lógica para obtener la acción asociada a un valor de utilidad
+        return new Action();
+    }
+
+    static class State {
+        // Clase que representa el estado del juego
+    }
+
+    static class Action {
+        // Clase que representa una acción del juego
+    }
+}
